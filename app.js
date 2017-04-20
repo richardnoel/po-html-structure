@@ -33,14 +33,6 @@ myApp.directive('uniText', function () {
         content.append(_.template(tplControl, data));
       }
       elem.remove();
-      //template = document.querySelector('#tpl-text');
-      //if (template){
-        //template = template.innerHTML;
-        //parentNode.append(_.template(template, data));
-        //$(_.template(template, data)).insertBefore(elem);
-        //elem.remove();
-      //}
-      //elem.after(html);
 		}
 	};
 });
