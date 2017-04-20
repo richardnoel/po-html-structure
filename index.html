@@ -1,0 +1,57 @@
+<!doctype html>
+<html ng-app="uniKit" >
+<head>
+  <meta charset="utf-8">
+  <title>Angular</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="./libs/angular.js"></script>
+  <script src="./libs/jquery.min.js"></script>
+  <script src="./libs/underscore-min.js"></script>
+  <script src="app.js"></script>
+</head>
+<body>
+
+  <script type='text/template' id="tpl-fieldContent">
+    <div id="<%-id%>" class="form-group col-sm-<%-colSpan%> col-md-<%-colSpan%> col-lg-<%-colSpan%>">
+    </div> 
+  </script>
+
+  <script type='text/template' id="tpl-textInput">
+   <div class="col-sm-<%-colSpanControl%> col-md-<%-colSpanControl%> col-lg-<%-colSpanControl%>">
+      <input type="text" class="control">
+      <span class="tooltip"></span>
+   </div>
+  </script>
+
+  <script type='text/template' id="tpl-fieldlabel">
+   <div class="col-sm-<%-colSpanLabel%>  col-md-<%-colSpanLabel%> col-lg-<%-colSpanLabel%>">
+      <label class="control-label">
+        <span >label</span>
+        <span class="required">*</span>
+      </label>
+   </div>
+  </script>
+
+
+
+<!--span id="output"></span>
+<section ng-app="app">
+    <article main-ctrl>
+        <div class="container"></div>
+    </article>
+</section>
+<script type='text/template' id="text">
+    <h5><%= button %></h5>
+    <ul>
+        <% for(item in list) { %>
+            <li><%= list[item] %></li>
+        <% } %>
+    </ul>
+</script-->
+  <input uni-text="nombre" type="text"  id="10" placeholder="Nombre"  ng-model="name"/>
+  <input uni-text="apellido" type="text"  id="10" placeholder="Nombre"  ng-model="name"/>
+  <input uni-text="edad" type="text"  id="10" placeholder="Nombre"  ng-model="name"/>
+  <input uni-text="celular" type="text"  id="10" placeholder="Nombre"  ng-model="name"/>
+</body>
+</html>
