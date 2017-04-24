@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta charset="utf-8"/>	
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+
+		<link rel="stylesheet" href="./libs/bootstrap.min.css">
+		<script src="./libs/jquery.min.js"></script>
+		<!--script src="./libs/angular.js"></script-->
+		<script src="./libs/build.js"></script>
+		<script src="./libs/underscore-min.js"></script>
+		<script src="app.js"></script>
+	</head>
+	<style>
+		div .container{
+			background-color: yellow;	
+		}
+	</style>
+	<body ng-controller="body">
+
+		<script type='text/template' id="tpl-fieldContent">
+			<div id="<%-id%>" class="form-group col-md-<%-colspan%>">
+			</div> 
+  </script>
+
+  <script type='text/template' id="tpl-textInput">
+   <div class="col-md-<%-colspan%> input-group"  ng-transclude="">
+				<span class="input-group-addon">$</span>			
+				<input type="text" class="form-control">
+				<span class="input-group-addon">00.0</span>
+   </div>
+  </script>
+
+  <script type='text/template' id="tpl-fieldlabel">
+			<label class="col-md-<%-colspan%>" ng-transclude="">
+				<span >label</span >
+			</label>
+  </script>
+
+  <script type='text/template' id="tpl-grid">
+			<div class="container col-md-<%- colspan%>" id="<%- id%>" ng-transclude="">
+				
+			</div>
+  </script>
+
+		<!--div class="container-fluid" uni-aspect='{"col":12, "cols":[1,3], "type":"formPanel"}' id="container1">	
+			<label uni-aspect='{"col":2}'>label1</label><input uni-aspect='{"col":2}' type="text" placeholder="input1">
+			<label uni-aspect='{"col":2}'>label2</label><input uni-aspect='{"col":2}' type="text" placeholder="input2">
+			<label uni-aspect='{"col":2}'>label3</label><input uni-aspect='{"col":2}' type="text" placeholder="input3">
+			<br>
+			<label uni-aspect='{"col":2}'>label4</label><input uni-aspect='{"col":2}' type="text" placeholder="input1">
+			<label uni-aspect='{"col":2}'>label5</label><input uni-aspect='{"col":2}' type="text" placeholder="input2">
+			<label uni-aspect='{"col":2}'>label6 </label><input uni-aspect='{"col":2}' type="text" placeholder="input3">
+		</div-->
+		<div class="container-fluid" uni-aspect='{"col":12, "cols":[1,3,1,3,1,3], "type":"grid"}' id="container1">	
+			<label uni-aspect=''>label1</label><input uni-aspect='' type="text" placeholder="input1">
+			<label uni-aspect=''>label2</label><input uni-aspect='' type="text" placeholder="input2">
+			<label uni-aspect=''>label3</label><input uni-aspect='' type="text" placeholder="input3">
+			<br>
+			<label uni-aspect=''>label4</label><input uni-aspect='' type="text" placeholder="input1">
+			<label uni-aspect=''>label5</label><input uni-aspect='' type="text" placeholder="input2">
+			<label uni-aspect=''>label6 </label><input uni-aspect='' type="text" placeholder="input3">
+		</div>
+	</body>

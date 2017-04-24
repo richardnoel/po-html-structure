@@ -6,18 +6,5 @@
 /*# sourceMappingURL=bootstrap.min.css.map */
 
 .input-group{
-	float: left!important;
-}
-
-.container{
-	width: 95%;
-}
-
-.form-horizontal .control-label {
-	padding-top:1px;
-}
-
-:required  {  
-	background: url(https://cdn0.iconfinder.com/data/icons/fugue/icon/asterisk-small.png) no-repeat;
-	background-position:right top;
+	float: left;
 }
