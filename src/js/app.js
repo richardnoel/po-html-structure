@@ -1,7 +1,5 @@
 var app = angular.module('app', []);
 app.controller('body', function ($scope) {
-	$scope.pageURL = '/case/input.html';
-	$scope.pivot = {};
 });
 
 app.run(['$rootScope', '$xhrFactory', function ($rootScope, $xhrFactory) {
@@ -13,16 +11,21 @@ app.run(['$rootScope', '$xhrFactory', function ($rootScope, $xhrFactory) {
 			switch (type) {
 				case ("grid"):
 					template = document.querySelector('#tpl-grid').innerHTML;
-					auxHtml.html(_.template(template, {"colspan": config.col, "id": "2"}));
+					auxHtml.html(_.template(template, config));
 					newTemplate = auxHtml.get(0).innerHTML;
 					break;
 				case ("label"):
 					template = document.querySelector('#tpl-fieldlabel').innerHTML;
-					newTemplate = _.template(template, {"colspan": config.col});
+					newTemplate = _.template(template,config);
 					break;
 				case ("input"):
 					template = document.querySelector('#tpl-textInput').innerHTML;
-					return _.template(template, {"colspan": config.col});
+					newTemplate = _.template(template, config);
+					break;
+				case ("panel"):
+					console.log("panel")
+					template = document.querySelector('#tpl-panel').innerHTML;
+					newTemplate = _.template(template, config);
 					break;
 			}
 			return newTemplate;
@@ -31,12 +34,11 @@ app.run(['$rootScope', '$xhrFactory', function ($rootScope, $xhrFactory) {
 
 app.directive('uniAspect', ['$rootScope', function ($rootScope) {
 		var getHTML = $rootScope.getHTML;
-		var defaultItem = {col: 3}, defaultGrid = {cols: [3, 3, 3, 3], col: 12},
-										html,
-										parentConfig,
-										contCols = 0,
-										contElements = 0,
-										contBR = 0;
+		var defaultGrid = {cols: [3, 3, 3, 3], colspan: 12},
+						html,
+						contBR = 0,
+						tempContBR = 0,
+						tempConfig;
 		return {
 			restrict: 'A',
 			transclude: true,
@@ -51,16 +53,32 @@ app.directive('uniAspect', ['$rootScope', function ($rootScope) {
 				if (settings.type === "grid") {
 					_.extend(defaultGrid, settings);
 				} else {
-					if(tagName !== "BR"){
-					if (!settings.col) {
-						pos = (elem.index()-contBR) % defaultGrid.cols.length;
-						settings.col = defaultGrid.cols[pos];
-					}						
-					}else{
-						contBR+=1;
+					if(settings.type === "panel"){
+						tempConfig = settings;
+						tempContBR = 0;
+						elem.data({config: tempConfig});
 					}
+					if(tagName !== "BR"){
+						if (!settings.colspan) {
+							if (elem.parent().attr("root")){
+								pos = (elem.index() - contBR) % defaultGrid.cols.length;
+								settings.colspan = defaultGrid.cols[pos];
+							}else{
+								pos = (elem.index() - tempContBR) % tempConfig.cols.length;
+								settings.colspan = tempConfig.cols[pos];
+							}
+						}
+					}else{
+						if(elem.parent().attr("root")){
+							contBR += 1;							
+						}else{
+							tempContBR += 1;							
+						}
+					}
+
 				}
 				html = getHTML(elem, settings);
+				elem.data({config: settings})
 				return html;
 			}
 		};

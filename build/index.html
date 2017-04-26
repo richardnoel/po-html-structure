@@ -14,18 +14,18 @@
 	</head>
 	<style>
 		div .container{
-			background-color: yellow;	
+			background-colspanor: yellow;	
 		}
 	</style>
 	<body ng-controller="body">
 
 		<script type='text/template' id="tpl-fieldContent">
-			<div id="<%-id%>" class="form-group col-md-<%-colspan%>">
+			<div id="<%-id%>" class="form-group   col-lg-<%-colspan%>">
 			</div> 
   </script>
 
   <script type='text/template' id="tpl-textInput">
-   <div class="col-md-<%-colspan%> input-group"  ng-transclude="">
+   <div class="col-lg-<%-colspan%> input-group uniControl"  ng-transclude="">
 				<span class="input-group-addon">$</span>			
 				<input type="text" class="form-control">
 				<span class="input-group-addon">00.0</span>
@@ -33,52 +33,76 @@
   </script>
 
   <script type='text/template' id="tpl-fieldlabel">
-			<label class="col-md-<%-colspan%>" ng-transclude="">
+			<label class="control-label col-lg-<%-colspan%>" ng-transclude="">
 				<span >label</span >
 			</label>
   </script>
-
+		
   <script type='text/template' id="tpl-grid">
-			<div class="container col-md-<%- colspan%>" id="<%- id%>" ng-transclude="">
-				
+			<div class="container form-horizontal row-border colspan-sm-<%-colspan%>  col-lg-<%-colspan%>" ng-transclude="" root>
 			</div>
   </script>
 		
-		<!--div class="container-fluid" uni-aspect='{"col":12, "cols":[1,3], "type":"formPanel"}' id="container1">	
-			<label uni-aspect='{"col":2}'>label1</label><input uni-aspect='{"col":2}' type="text" placeholder="input1">
-			<label uni-aspect='{"col":2}'>label2</label><input uni-aspect='{"col":2}' type="text" placeholder="input2">
-			<label uni-aspect='{"col":2}'>label3</label><input uni-aspect='{"col":2}' type="text" placeholder="input3">
+  <script type='text/template' id="tpl-panel">
+			<div class="panel panel-default colspan-sm-<%-colspan%>  col-lg-<%-colspan%>" ng-transclude="">
+        <div class="panel-heading clearfix" ng-transclude="">
+          <h3 class="panel-title" ng-transclude="">Input Groups</h3>
+        </div>
+			</div>
+  </script>		
+		
+		<!--div class="container-fluid" uni-aspect='{"colspan":12, "colspans":[1,3], "type":"formPanel"}' id="container1">	
+			<label uni-aspect='{"colspan":2}'>label1</label><input uni-aspect='{"colspan":2}' type="text" placeholder="input1">
+			<label uni-aspect='{"colspan":2}'>label2</label><input uni-aspect='{"colspan":2}' type="text" placeholder="input2">
+			<label uni-aspect='{"colspan":2}'>label3</label><input uni-aspect='{"colspan":2}' type="text" placeholder="input3">
 			<br>
-			<label uni-aspect='{"col":2}'>label4</label><input uni-aspect='{"col":2}' type="text" placeholder="input1">
-			<label uni-aspect='{"col":2}'>label5</label><input uni-aspect='{"col":2}' type="text" placeholder="input2">
-			<label uni-aspect='{"col":2}'>label6 </label><input uni-aspect='{"col":2}' type="text" placeholder="input3">
+			<label uni-aspect='{"colspan":2}'>label4</label><input uni-aspect='{"colspan":2}' type="text" placeholder="input1">
+			<label uni-aspect='{"colspan":2}'>label5</label><input uni-aspect='{"colspan":2}' type="text" placeholder="input2">
+			<label uni-aspect='{"colspan":2}'>label6 </label><input uni-aspect='{"colspan":2}' type="text" placeholder="input3">
 		</div-->
-		<div class="container-fluid" uni-aspect='{"col":12, "cols":[1,2,1,2,1,2,1,2], "type":"grid"}' id="container1">	
-			<label uni-aspect='{"col":1}'>label1</label><input uni-aspect='{"col":1}' type="text" placeholder="input1">
-			<label uni-aspect='{"col":1}'>label2</label><input uni-aspect='{"col":1}' type="text" placeholder="input2">
-			<label uni-aspect='{"col":1}'>label3</label><input uni-aspect='{"col":1}' type="text" placeholder="input3">
-			<label uni-aspect='{"col":2}'>label4</label><input uni-aspect='{"col":4}' type="text" placeholder="input1">
-			<br uni-aspect=''>
+		<div uni-aspect='{"colspan":12, "cols":[1,2,1,2,1,2,1,2], "type":"grid"}' id="container1" root=true>
+			<label uni-aspect='{"colspan":2}'>label4</label><input uni-aspect='{"colspan":10}' type="text" placeholder="input1">
 			<br uni-aspect=''>
 			<label uni-aspect=''>label5</label><input uni-aspect='' type="text" placeholder="input2">
 			<label uni-aspect=''>label6 </label><input uni-aspect='' type="text" placeholder="input3">
 			<label uni-aspect=''>label1</label><input uni-aspect='' type="text" placeholder="input1">
 			<label uni-aspect=''>label2</label><input uni-aspect='' type="text" placeholder="input2">
 			<br uni-aspect=''>
-			<br uni-aspect=''>
 			<label uni-aspect=''>label3</label><input uni-aspect='' type="text" placeholder="input3">
 			<label uni-aspect=''>label4</label><input uni-aspect='' type="text" placeholder="input1">
 			<label uni-aspect=''>label5</label><input uni-aspect='' type="text" placeholder="input2">
 			<label uni-aspect=''>label6 </label><input uni-aspect='' type="text" placeholder="input3">
 			<br uni-aspect=''>
+			<div uni-aspect='{"colspan":6, "cols":[3,3,3,3], "type":"panel"}'>
+			
+				<label uni-aspect=''>label1</label><input uni-aspect='' type="text" placeholder="input1">
+				<label uni-aspect=''>label2</label><input uni-aspect='' type="text" placeholder="input2">
+				<label uni-aspect=''>label3</label><input uni-aspect='' type="text" placeholder="input3">
+				<label uni-aspect=''>label4/*/*/*/*/*</label><span><input uni-aspect='' type="checkbox" placeholder="input1"><input uni-aspect='' type="text" placeholder="input1"></span>				
+			</div>
+			<div uni-aspect='{"colspan":6, "cols":[3,3,3,3], "type":"panel"}'>
+					<label uni-aspect=''>label1</label><input uni-aspect='' type="text" placeholder="input1">
+					<label uni-aspect=''>label2</label><input uni-aspect='' type="text" placeholder="input2">
+					<br uni-aspect=''>
+					<label uni-aspect=''>label3</label><input uni-aspect='' type="text" placeholder="input3">
+					<label uni-aspect=''>label4</label><input uni-aspect='' type="text" placeholder="input1">
+					<br uni-aspect=''>
+					<label uni-aspect=''>label1</label><input uni-aspect='' type="text" placeholder="input1">
+					<label uni-aspect=''>label2</label><input uni-aspect='' type="text" placeholder="input2">
+					<br uni-aspect=''>
+					<label uni-aspect=''>label3</label><input uni-aspect='' type="text" placeholder="input3">
+					<label uni-aspect=''>label4</label><input uni-aspect='' type="text" placeholder="input1">
+			</div>
 			<br uni-aspect=''>
 			<label uni-aspect=''>label1</label><input uni-aspect='' type="text" placeholder="input1">
 			<label uni-aspect=''>label2</label><input uni-aspect='' type="text" placeholder="input2">
 			<label uni-aspect=''>label3</label><input uni-aspect='' type="text" placeholder="input3">
 			<label uni-aspect=''>label4</label><input uni-aspect='' type="text" placeholder="input1">
 			<br uni-aspect=''>
-			<br uni-aspect=''>
 			<label uni-aspect=''>label5</label><input uni-aspect='' type="text" placeholder="input2">
 			<label uni-aspect=''>label6 </label><input uni-aspect='' type="text" placeholder="input3">
+			<label uni-aspect=''>label5</label><input uni-aspect='' type="text" placeholder="input2">
+			<label uni-aspect=''>adwadaw </label><input uni-aspect='' type="text" placeholder="input3">	
+			
 		</div>
 	</body>
